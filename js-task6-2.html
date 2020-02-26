@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+  </head>
+  <body>
+    <main>
+
+      <script>
+					
+				startPos = prompt('input "start" position', '');
+				selectPos = prompt('input "end" position', '');
+
+				function coordinates(startPos, selectPos) {
+
+					startPos = startPos.toLowerCase();
+					selectPos = selectPos.toLowerCase();
+					const xpos = 'abcdefgh';
+					const ypos = '12345678';
+					let x = xpos.indexOf(startPos[0])+1;
+					let y = ypos.indexOf(startPos[1])+1;
+					let xStart = x;
+					let yStart = y;
+					let subResult, result = false;
+					
+
+					while (xStart < 8 && yStart < 8) {
+						xStart++;
+						yStart++;
+						if ((xpos[xStart-1] + ypos[yStart-1]) === selectPos) subResult = true;
+						if (subResult === true) result = true;
+					}
+					console.log(xpos[xStart-1] + ypos[yStart-1]);
+
+					xStart = x;
+					yStart = y;
+
+					while (xStart < 8 && yStart > 1) {
+						xStart++;
+						yStart--;
+						if ((xpos[xStart-1] + ypos[yStart-1]) === selectPos)subResult = true;
+						if (subResult === true) result = true;
+					}
+					console.log(xpos[xStart-1] + ypos[yStart-1]);
+
+					xStart = x;
+					yStart = y;
+
+					while (xStart > 1 && yStart > 1) {
+						xStart--;
+						yStart--;
+						if ((xpos[xStart-1] + ypos[yStart-1]) === selectPos) subResult = true;
+						if (subResult === true) result = true;
+					}
+					console.log(xpos[xStart-1] + ypos[yStart-1]);
+
+					xStart = x;
+					yStart = y;
+					
+					while (xStart > 1 && yStart < 8) {
+						xStart--;
+						yStart++;
+						if ((xpos[xStart-1] + ypos[yStart-1]) === selectPos) subResult = true;
+						if (subResult === true) result = true;
+					}
+					console.log(xpos[xStart-1] + ypos[yStart-1]);
+					
+					return result;
+				}
+
+				alert(coordinates(startPos, selectPos));
+
+      </script>
+  	</main>
+  </body>
